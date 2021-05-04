@@ -6,3 +6,12 @@ dash
 dash_core_components
 dash_html_components
 plotly
+  
+dash
+requests
+flask
+retrying
+ipython
+ipykernel
+ansi2html
+jupyter_server_proxy
