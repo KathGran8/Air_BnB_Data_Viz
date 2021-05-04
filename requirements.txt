@@ -1,3 +1,8 @@
 numpy==1.14.5
 pandas
 matplotlib
+jupyter_dash
+dash
+dash_core_components
+dash_html_components
+plotly
