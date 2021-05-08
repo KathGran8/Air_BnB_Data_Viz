@@ -30,10 +30,10 @@ def page_title(pathname):
         return page_5_title()
         
     # If the user tries to reach a different page, return a 404 message
-    return dbc.Jumbotron(
-        [
-            html.H1("404: Not found", className="text-danger"),
-            html.Hr(),
-            html.P(f"The pathname {pathname} was not recognised..."),
-        ]
-    )
+    #return dbc.Jumbotron(
+    #    [
+    #        html.H1("404: Not found", className="text-danger"),
+    #        html.Hr(),
+    #        html.P(f"The pathname {pathname} was not recognised..."),
+    #    ]
+    #)
