@@ -11,7 +11,8 @@ from functions.page_5 import page_5_title
 
 
 def page_title(pathname):
-    if pathname == "/" or pathname == "/user/kathgran8-air_bnb_data_viz-l5urr1qu/proxy/8080/":
+    first_url = (pathname[:32] == '/user/kathgran8-air_bnb_data_viz' and pathname[-12:] == '/proxy/8080/')
+    if pathname == "/" or first_url:
         return page_intro_title()
     
     elif pathname == "/page-1":
