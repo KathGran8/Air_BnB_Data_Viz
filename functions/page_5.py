@@ -50,7 +50,7 @@ NYC_coor = (40.730610, -73.935242)
 map_coord = html.Div([
             html.P("Click on map to choose Coordinate:"),
             dl.Map(id="map-id", style={'width': '100%', 'height': '50vh'}, 
-                   center=NYC_coor, zoom=10, children=[dl.TileLayer('cartodbpositron')]),            
+                   center=NYC_coor, zoom=10, children=[dl.StamenTileLayer("toner",  attribution:'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.')]),            
             html.Div(id="coordinate-click-id")
             ])
 
