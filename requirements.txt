@@ -2,7 +2,6 @@ numpy==1.14.5
 pandas
 matplotlib
 plotly
-json
 scipy
 
 jupyter_dash
