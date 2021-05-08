@@ -17,7 +17,7 @@ df_head = df.head().iloc[:, :14]
 
 
 def page_content(pathname):
-    if pathname == "/":
+    if pathname == "/" or pathname == "/user/kathgran8-air_bnb_data_viz-l5urr1qu/proxy/8080/":
         return page_intro(df_head)
 
     elif pathname == "/page-1":
