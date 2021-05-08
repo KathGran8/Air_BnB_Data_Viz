@@ -46,11 +46,13 @@ slider3 = dbc.FormGroup(
 form = dbc.Form([slider1, slider2, slider3])
 
 NYC_coor = (40.730610, -73.935242)
+url = 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
+attribution = '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> '
 
 map_coord = html.Div([
             html.P("Click on map to choose Coordinate:"),
             dl.Map(id="map-id", style={'width': '100%', 'height': '50vh'}, 
-                   center=NYC_coor, zoom=10, children=[dl.StamenTileLayer("toner",  attribution:'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.')]),            
+                   center=NYC_coor, zoom=10, children=[dl.TileLayer(url=url, maxZoom=20, attribution=attribution)]),            
             html.Div(id="coordinate-click-id")
             ])
 
