@@ -1,13 +1,18 @@
 numpy==1.14.5
 pandas
 matplotlib
+plotly
+json
+scipy
+
 jupyter_dash
 dash
 dash_core_components
 dash_html_components
-plotly
+dash_bootstrap_components
+dash_table
+dash_leaflet
   
-dash
 requests
 flask
 retrying
@@ -15,3 +20,4 @@ ipython
 ipykernel
 ansi2html
 jupyter_server_proxy
+
