@@ -25,8 +25,7 @@ def page_7(df):
     return dbc.Row(
             [
                 dbc.Col(html.Div(Sampeltext), width=3),
-                dbc.Col()#html.Iframe(id='map1', srcDoc = open('html_plots/Map_room_type.html','r').read(),                                     
-                                    #width='100%',height = '450'))
+                dbc.Col(html.Iframe(id='map1', srcDoc = open('html_plots/Map_features.html','r').read(),                                             width='100%',height = '450'))
             ]
         )
 
