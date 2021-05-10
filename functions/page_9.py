@@ -46,14 +46,17 @@ slider3 = dbc.FormGroup(
 form = dbc.Form([slider1, slider2, slider3])
 
 NYC_coor = (40.730610, -73.935242)
-url = 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
-attribution = '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> '
+#url = 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
+#attribution = '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> 
+
+url = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+	
 
 map_coord = html.Div([
             html.P("Click on map to choose Coordinate:"),
             dl.Map(id="map-id", style={'width': '100%', 'height': '50vh'}, 
-                   center=NYC_coor, zoom=10, children=[dl.TileLayer(url=url, maxZoom=20, attribution=attribution)]),            
-            html.Div(id="coordinate-click-id")
+                   center=NYC_coor, zoom=10, children=[dl.TileLayer(url=url, maxZoom=20, attribution=attribution)])
             ])
 
 def page_9(df):
