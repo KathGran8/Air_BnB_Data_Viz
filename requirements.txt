@@ -21,3 +21,4 @@ ansi2html
 jupyter_server_proxy
 
 geopandas
+folium
