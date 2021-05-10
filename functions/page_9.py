@@ -20,30 +20,49 @@ slider1 = dbc.FormGroup(
     [
         dbc.Label("Room Type", html_for="slider1"),
         dcc.Slider(id="slider1", 
-                   min=0,
-                   max=10,
-                   step=None,
+                   min=0, max=10,
+                   step=None, value=5,
                    marks={0: 'Entire App',
                           5: 'Private Room',
                           10: 'Shared Room'},
-                   value=5,
                    included=False),
     ]
 )
 slider2 = dbc.FormGroup(
     [
-        dbc.Label("Slider2", html_for="slider2"),
-        dcc.Slider(id="slider2", min=0, max=10, step=0.5, value=3),
+        dbc.Label("Minimum Nights", html_for="slider2"),
+        dcc.Slider(id="slider2", 
+                   min=1, max=365, 
+                   step=1, value=183, 
+                   marks={1: '1',
+                          365: '365'},
+                   included=False),
     ]
 )
 slider3 = dbc.FormGroup(
     [
-        dbc.Label("Slider3", html_for="slider3"),
-        dcc.Slider(id="slider3", min=0, max=10, step=0.5, value=3),
+        dbc.Label("Avalibility", html_for="slider3"),
+        dcc.Slider(id="slider3", 
+                   min=1, max=365, 
+                   step=1, value=183, 
+                   marks={1: '1',
+                          365: '365'},
+                   included=False),
+    ]
+)
+slider4 = dbc.FormGroup(
+    [
+        dbc.Label("Number of Reviews", html_for="slider4"),
+        dcc.Slider(id="slider4", 
+                   min=1, max=629, 
+                   step=1, value=315, 
+                   marks={1: '1',
+                          629: '629'},
+                   included=False),
     ]
 )
 
-form = dbc.Form([slider1, slider2, slider3])
+form = dbc.Form([slider1, slider2, slider3, slider4])
 
 NYC_coor = (40.730610, -73.935242)
 #url = 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
@@ -66,7 +85,10 @@ def page_9(df):
                         dbc.Col(map_coord,) #style={'background-color': '#3b968a'})
                     ]),
                     dbc.Row([
-                        html.Div(id='prediction_input') 
+                        dbc.Col(html.H4(id='prediction'), width='auto')
                         #html.Div(id='slider-output-container'),
                         #html.Div(id='coordinate-click-id') 
-                    ])])
+                    ],
+                        justify='center',
+                        align='baseline',
+                        style={'margin-top':'15px'})])
