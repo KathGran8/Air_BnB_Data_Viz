@@ -3,6 +3,8 @@ pandas
 matplotlib
 plotly
 scipy
+sklearn
+joblib
 
 jupyter_dash
 dash
