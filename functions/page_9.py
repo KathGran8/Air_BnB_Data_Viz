@@ -63,6 +63,7 @@ def page_9(df):
                         dbc.Col(map_coord,) #style={'background-color': '#3b968a'})
                     ]),
                     dbc.Row([
-                        html.Div(id='slider-output-container'),
-                        html.Div(id='coordinate-click-id') 
+                        html.Div(id='prediction_input') 
+                        #html.Div(id='slider-output-container'),
+                        #html.Div(id='coordinate-click-id') 
                     ])])
