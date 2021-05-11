@@ -3,7 +3,7 @@ pandas
 matplotlib
 plotly
 scipy
-sklearn
+sklearn==0.24.2
 joblib
 
 jupyter_dash
