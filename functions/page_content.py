@@ -17,7 +17,7 @@ from functions.page_9 import page_9
 
 import pandas as pd
 
-df = pd.read_csv("Data/data_air/AB_data_clean.csv")
+df = pd.read_csv("Data/AB_data_clean.csv")
 df_head = df.head().iloc[:, :14]
 
 
