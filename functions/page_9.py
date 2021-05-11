@@ -36,6 +36,7 @@ slider2 = dbc.FormGroup(
                    step=1, value=183, 
                    marks={1: '1',
                           365: '365'},
+                   tooltip={'always_visible':False, 'placement':'bottom'},
                    included=False),
     ]
 )
@@ -47,6 +48,7 @@ slider3 = dbc.FormGroup(
                    step=1, value=183, 
                    marks={1: '1',
                           365: '365'},
+                   tooltip={'always_visible':False, 'placement':'bottom'},
                    included=False),
     ]
 )
@@ -58,6 +60,7 @@ slider4 = dbc.FormGroup(
                    step=1, value=315, 
                    marks={1: '1',
                           629: '629'},
+                   tooltip={'always_visible':False, 'placement':'bottom'},
                    included=False),
     ]
 )
@@ -75,7 +78,8 @@ attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStre
 map_coord = html.Div([
             html.P("Click on map to choose Coordinate:"),
             dl.Map(id="map-id", style={'width': '100%', 'height': '50vh'}, 
-                   center=NYC_coor, zoom=10, children=[dl.TileLayer(url=url, maxZoom=20, attribution=attribution)])
+                   center=NYC_coor, zoom=10, children=[dl.TileLayer(url=url, maxZoom=20, attribution=attribution), 
+                                                       dl.LayerGroup(id="layer")])
             ])
 
 def page_9(df):
