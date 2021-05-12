@@ -18,7 +18,7 @@ from functions.page_9 import page_9
 import pandas as pd
 
 df = pd.read_csv("Data/AB_data_clean.csv")
-df_head = df.head().iloc[:, :14]
+df_head = df.iloc[:10]
 
 
 def page_content(pathname):
