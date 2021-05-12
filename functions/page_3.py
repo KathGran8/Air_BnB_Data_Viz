@@ -39,7 +39,8 @@ def graph_price_neigh_room(df):
                 data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name))
                 count_0 += 1
             else:
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, showlegend=False))
+                name = 'Entire home/apt'
+                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, showlegend=False))
                 
         elif plot_data.color[i] == 1:
             color = '#00cc96'
@@ -48,7 +49,8 @@ def graph_price_neigh_room(df):
                 data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name))
                 count_1 += 1
             else:
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, showlegend=False))   
+                name = 'Shared room'
+                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, showlegend=False))   
                 
         elif plot_data.color[i] == 2:
             color = '#ef553b'
@@ -57,7 +59,8 @@ def graph_price_neigh_room(df):
                 data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name))
                 count_2 += 1
             else:
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, showlegend=False))   
+                name = 'Private room'
+                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, showlegend=False))   
         
         
     layout = {"title": {'text': "Mean listing price per neighbourhood (also most available listing type)", 'xanchor': 'center','yanchor': 'top', 'y':0.9, 'x':0.5}, 
