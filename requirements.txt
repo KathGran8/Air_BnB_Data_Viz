@@ -24,3 +24,5 @@ jupyter_server_proxy
 
 geopandas
 folium
+
+geopy
