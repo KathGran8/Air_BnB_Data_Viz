@@ -18,7 +18,7 @@ from functions.page_9 import page_9
 import pandas as pd
 
 df = pd.read_csv("Data/AB_data_clean.csv")
-df_head = df.iloc[:10]
+df_head = df.iloc[:10].copy()
 
 
 def page_content(pathname):

@@ -77,7 +77,7 @@ attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStre
 
 map_coord = html.Div([
             html.P("Click on map to choose Coordinate:"),
-            dl.Map(id="map-id", style={'width': '100%', 'height': '50vh'}, 
+            dl.Map(id="map-id", style={'width': '100%', 'height': '300px'}, 
                    center=NYC_coor, zoom=10, children=[dl.TileLayer(url=url, maxZoom=20, attribution=attribution), 
                                                        dl.LayerGroup(id="layer")])
             ])
