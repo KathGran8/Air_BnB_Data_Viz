@@ -3,7 +3,7 @@ pandas
 matplotlib
 plotly
 scipy
-sklearn==0.24.2
+sklearn
 joblib
 
 jupyter_dash
@@ -24,3 +24,5 @@ jupyter_server_proxy
 
 geopandas
 folium
+
+geopy
