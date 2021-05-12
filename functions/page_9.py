@@ -7,7 +7,7 @@ import pandas as pd
 
 def page_9_title():
         return dbc.Row(
-            [dbc.Col(html.H3("Pediction"), width='auto'),],
+            [dbc.Col(html.H3("Prediction"), width='auto'),],
              #dbc.Col(html.H4("And Room type"), width='auto')],
             justify='end',
             align='baseline'
