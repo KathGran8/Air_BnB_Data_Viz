@@ -16,7 +16,7 @@ def page_intro_title():
 Sampeltext = "!!!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum euismod commodo. Phasellus metus lorem, tristique nec erat in, laoreet ultricies nunc. Maecenas efficitur placerat lobortis. Nullam lacus lectus, molestie ut semper vel, vestibulum sed ligula.!! And here goes the link to the explainer notebook."
 
 def make_tabel(df_head):
-    df = df_head.iloc[:8]
+    df = df_head.iloc[:8].copy(deep = True)
     df['lat_round'] = np.round(df.latitude,2)
     df['lng_round'] = np.round(df.longitude,2)
     col_id = ['room_type', 'minimum_nights', 'availability_365', 'number_of_reviews', 'reviews_per_month', 'calculated_host_listings_count', 'neighbourhood_group', 'neighbourhood', 'lat_round', 'lng_round']
