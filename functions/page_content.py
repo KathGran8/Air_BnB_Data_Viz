@@ -18,10 +18,13 @@ from functions.page_9 import page_9
 import pandas as pd
 
 df = pd.read_csv("Data/AB_data_clean.csv")
-df_head = df.iloc[:10].copy()
+df_head = df.iloc[:10].copy(deep = True)
+#df_join = pd.read_csv("../Data/joined_data.csv")
+#df_join = df_join.drop(['Unnamed: 0'], axis = 1)
 
 
-def page_content(pathname):
+
+def page_content(pathname, img_scr1):
     first_url = (pathname[:32] == '/user/kathgran8-air_bnb_data_viz' and pathname[-12:] == '/proxy/8080/')
     if pathname == "/" or first_url:
         return page_intro(df_head)
@@ -39,10 +42,10 @@ def page_content(pathname):
         return page_4(df)
 
     elif pathname == "/page-5":
-        return page_5(df)
+        return page_5(df, img_scr1)
     
     elif pathname == "/page-6":
-        return page_6(df)
+        return page_6(df, img_scr1)
     
     elif pathname == "/page-7":
         return page_7(df)
