@@ -24,7 +24,7 @@ df_head = df.iloc[:10].copy(deep = True)
 
 
 
-def page_content(pathname, img_scr1):
+def page_content(pathname, img_scr1, img_scr2):
     first_url = (pathname[:32] == '/user/kathgran8-air_bnb_data_viz' and pathname[-12:] == '/proxy/8080/')
     if pathname == "/" or first_url:
         return page_intro(df_head)
@@ -45,7 +45,7 @@ def page_content(pathname, img_scr1):
         return page_5(df, img_scr1)
     
     elif pathname == "/page-6":
-        return page_6(df, img_scr1)
+        return page_6(df, img_scr2)
     
     elif pathname == "/page-7":
         return page_7(df)

@@ -17,17 +17,10 @@ def page_5_title():
 
 Sampeltext = "!!!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum euismod commodo. Phasellus metus lorem, tristique nec erat in, laoreet ultricies nunc. Maecenas efficitur placerat lobortis. Nullam lacus lectus, molestie ut semper vel, vestibulum sed ligula.!!"
 
-
-image_filename = 'functions/hi.png' 
-encoded_image = base64.b64encode(open(image_filename, 'rb').read())
-
-
-
 def page_5(df, img_scr1):
     return dbc.Row(
             [
                 dbc.Col(html.Div(Sampeltext), width=3),
                 dbc.Col(html.Img(src=img_scr1, height = 700, width = 700))
-                #(dcc.Graph(id="graph2", figure=graph_price_avail(df), config={'displayModeBar': False})))
             ]
         )
