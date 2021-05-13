@@ -6,6 +6,11 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
 
+from joblib import load
+
+reg_forest_AB = load('ML_models/model_forest_AB.joblib')
+reg_forest_joined = load('ML_models/model_forest_joined.joblib')
+
 def page_8_title():
         return dbc.Row(
             [dbc.Col(html.H3("Machine Learning Visualization"), width='auto'),],
@@ -16,64 +21,58 @@ def page_8_title():
 
 Sampeltext = "!!!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum euismod commodo. Phasellus metus lorem, tristique nec erat in, laoreet ultricies nunc. Maecenas efficitur placerat lobortis. Nullam lacus lectus, molestie ut semper vel, vestibulum sed ligula.!!"
 
-def graph_price_neigh_room(df):
-    plot_data = df.groupby(['neighbourhood_other',]).mean().loc[:,'price'].sort_values(ascending = False)
-    plot_data_color = df.groupby(['neighbourhood_other',]).mean()[['room_type_Entire home/apt', 'room_type_Shared room', 'room_type_Private room']]
-    color = []
-    for x in plot_data_color.values:
-      color.append(np.argmax(x))
-    plot_data_color['color'] = color
 
-    plot_data = pd.DataFrame(plot_data).merge(plot_data_color, left_index = True, right_index = True)
+def ML_comparison_h():
+    features_AB = ['Latitude', 'Longitude', 'Minimum Nights', 'Number of Reviews', 'Reviews per Month', 'Calculated Host Listings count', 'Availability 365', 
+                   'Neighbourhood Label', 'Neighbourhood group: Bronx', 'Neighbourhood group: Brooklyn', 'Neighbourhood group: Manhattan', 
+                   'Neighbourhood group: Queens', 'Neighbourhood group: Staten Island', 'Room Type: Entire home/apt', 'Room Type: Private room', 'Room Type: Shared room']
 
-    x = plot_data.index
-    y = plot_data.price
+    features_joined = features_AB + ['Turistic Places within 2500m', 'Turistic Places within 1000m', 'Turistic Places within 500m', 
+                                     'Rat Sightings within 2500m', 'Rat Sightings within 1000m', 'Rat Sightings within 500m', 
+                                     'Trees within 2500m', 'Trees within 1000m', 'Trees within 500m'] 
+    
+    plot_data1 = pd.Series(reg_forest_AB.feature_importances_, index=features_AB).nlargest(30)
+    plot_data2 = pd.Series(reg_forest_joined.feature_importances_, index=features_joined).nlargest(30)
     
     data = []
-    count_0 = 0; count_1 = 0; count_2 = 0
-    for i in range(len(x)):
-        if plot_data.color[i] == 0:
-            color = '#636efa'
-            if count_0 == 0:
-                name = 'Entire home/apt'
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name))
-                count_0 += 1
-            else:
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, showlegend=False))
-                
-        elif plot_data.color[i] == 1:
-            color = '#00cc96'
-            if count_1 == 0:
-                name = 'Shared room'
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name))
-                count_1 += 1
-            else:
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, showlegend=False))   
-                
-        elif plot_data.color[i] == 2:
-            color = '#ef553b'
-            if count_2 == 0:
-                name = 'Private room'
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name))
-                count_2 += 1
-            else:
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, showlegend=False))   
-        
-        
-    layout = {"title": {'text': "Mean listing price per neighbourhood (also most available listing type)", 'xanchor': 'center','yanchor': 'top', 'y':0.9, 'x':0.5}, 
-              "xaxis": {'dtick': 1, 'tickfont': {'size': 10}, 'tickangle': -80}, 
-              "yaxis": {"title": "Price (dollars)"},
-              "legend":{"orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "right", "x": 1},
-              "height": 500}    
+    data.append(go.Bar(y = plot_data1.index, x=plot_data1.values, orientation='h', name="Without Turistic places,<br>Trees and Rats"))
+    data.append(go.Bar(y = plot_data2.index, x=plot_data2.values, orientation='h', name="With Turistic places,<br>Trees and Rats"))
+    
+    layout = {"title": {'text': "Feature importance assigned by two Random Forests fitted on diferent data", 'xanchor': 'center','yanchor': 'top', 'y':0.9, 'x':0.5}, 
+              "xaxis": {"title": "Feature importance"},
+              "height":700}    
     
     return go.Figure(data=data, layout=layout)
 
+def ML_comparison_v():
+    features_AB = ['Latitude', 'Longitude', 'Minimum Nights', 'Number of Reviews', 'Reviews per Month', 'Calculated Host Listings count', 'Availability 365', 
+                   'Neighbourhood Label', 'Neighbourhood group: Bronx', 'Neighbourhood group: Brooklyn', 'Neighbourhood group: Manhattan', 
+                   'Neighbourhood group: Queens', 'Neighbourhood group: Staten Island', 'Room Type: Entire home/apt', 'Room Type: Private room', 'Room Type: Shared room']
+
+    features_joined = features_AB + ['Turistic Places within 2500m', 'Turistic Places within 1000m', 'Turistic Places within 500m', 
+                                     'Rat Sightings within 2500m', 'Rat Sightings within 1000m', 'Rat Sightings within 500m', 
+                                     'Trees within 2500m', 'Trees within 1000m', 'Trees within 500m'] 
+    
+    plot_data1 = pd.Series(reg_forest_AB.feature_importances_, index=features_AB).nlargest(30)
+    plot_data2 = pd.Series(reg_forest_joined.feature_importances_, index=features_joined).nlargest(30)
+    
+    data = []
+    data.append(go.Bar(x = plot_data1.index, y=plot_data1.values, orientation='v', name="Without Turistic places, Trees and Rats"))
+    data.append(go.Bar(x = plot_data2.index, y=plot_data2.values, orientation='v', name="With Turistic places, Trees and Rats"))
+    
+    layout = {"title": {'text': "Feature importance assigned by two Random Forests fitted on diferent data", 'xanchor': 'center','yanchor': 'top', 'y':0.9, 'x':0.5}, 
+              "yaxis": {"title": "Feature importance"},
+              "xaxis": {'dtick': 1, 'tickfont': {'size': 10}, 'tickangle': -80}, 
+              "legend":{"orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "right", "x": 1},
+              "height":500}    
+    
+    return go.Figure(data=data, layout=layout)
 
 
 def page_8(df):
     return dbc.Row(
             [
                 dbc.Col(html.Div(Sampeltext), width=3),
-                dbc.Col()#(dcc.Graph(id="graph3", figure=graph_price_neigh_room(df), config={'displayModeBar': False})))
+                dbc.Col((dcc.Graph(id="graph8", figure=ML_comparison_h(), config={'displayModeBar': False})))
             ]
         )
