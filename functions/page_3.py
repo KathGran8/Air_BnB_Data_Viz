@@ -18,49 +18,55 @@ Sampeltext = "!!!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
 
 def graph_price_neigh_room(df):
     plot_data = df.groupby(['neighbourhood_other',]).mean().loc[:,'price'].sort_values(ascending = False)
+
     plot_data_color = df.groupby(['neighbourhood_other',]).mean()[['room_type_Entire home/apt', 'room_type_Shared room', 'room_type_Private room']]
     color = []
     for x in plot_data_color.values:
       color.append(np.argmax(x))
     plot_data_color['color'] = color
-
     plot_data = pd.DataFrame(plot_data).merge(plot_data_color, left_index = True, right_index = True)
+    
+    plot_borough = df.groupby(['neighbourhood'])['neighbourhood_group'].agg(pd.Series.mode)
+    plot_data = pd.DataFrame(plot_data).merge(plot_borough, left_index = True, right_index = True)
 
     x = plot_data.index
     y = plot_data.price
     
+    borough = [str(i) for i in range(44)]
+    
     data = []
     count_0 = 0; count_1 = 0; count_2 = 0
     for i in range(len(x)):
+        borough = plot_data.neighbourhood_group[i]
         if plot_data.color[i] == 0:
             color = '#636efa'
             if count_0 == 0:
                 name = 'Entire home/apt'
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name))
+                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, hovertext=borough, hoverinfo="text"))
                 count_0 += 1
             else:
                 name = 'Entire home/apt'
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, showlegend=False))
+                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, showlegend=False, hovertext=borough, hoverinfo="text"))
                 
         elif plot_data.color[i] == 1:
             color = '#00cc96'
             if count_1 == 0:
                 name = 'Shared room'
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name))
+                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, hovertext=borough, hoverinfo="text"))
                 count_1 += 1
             else:
                 name = 'Shared room'
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, showlegend=False))   
+                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, showlegend=False, hovertext=borough, hoverinfo="text"))   
                 
         elif plot_data.color[i] == 2:
             color = '#ef553b'
             if count_2 == 0:
                 name = 'Private room'
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name))
+                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, hovertext=borough, hoverinfo="text"))
                 count_2 += 1
             else:
                 name = 'Private room'
-                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, showlegend=False))   
+                data.append(go.Bar(x = [x[i]], y = [y[i]], marker_color = color, name = name, showlegend=False, hovertext=borough, hoverinfo="text"))   
         
         
     layout = {"title": {'text': "Mean listing price per neighbourhood (also most available listing type)", 'xanchor': 'center','yanchor': 'top', 'y':0.9, 'x':0.5}, 
