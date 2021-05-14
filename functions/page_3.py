@@ -14,7 +14,6 @@ def page_3_title():
             align='baseline'
         )
 
-Sampeltext = "!!!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum euismod commodo. Phasellus metus lorem, tristique nec erat in, laoreet ultricies nunc. Maecenas efficitur placerat lobortis. Nullam lacus lectus, molestie ut semper vel, vestibulum sed ligula.!!"
 
 def graph_price_neigh_room(df):
     plot_data = df.groupby(['neighbourhood_other',]).mean().loc[:,'price'].sort_values(ascending = False)
@@ -79,10 +78,24 @@ def graph_price_neigh_room(df):
 
 
 
+text1 = """On this page we see mean pricing of listings in the most popular neighbourhoods of New York. If you hover over the plot you can see which borough the neighbourhood belongs to. From this you can see that all the top 15 most expensive neighbourhoods are all in Manhattan. It can also be seen that Midtown in Manhattan is on average more than twice as expensive as Ridgewood in Queens.
+
+The plot also shows that in almost all neighbourhoods the most available option is renting an *entire home/apartment* with the exception of Inwood which has more *private rooms* up for rent.
+"""
+
+text2 =""""""
+
 def page_3(df):
-    return dbc.Row(
+        return html.Div([
+        dbc.Row(
             [
-                dbc.Col(html.Div(Sampeltext), width=3),
+                dbc.Col(dcc.Markdown(text1), width=3),
                 dbc.Col((dcc.Graph(id="graph3", figure=graph_price_neigh_room(df), config={'displayModeBar': False})))
             ]
-        )
+        ),
+        dbc.Row(
+            [
+                dbc.Col(dcc.Markdown(text2),)
+            ]
+        ),
+    ],style={'text-align': 'justify',},)
