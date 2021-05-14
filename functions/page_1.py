@@ -7,7 +7,7 @@ import dash_leaflet as dl
 
 def page_1_title():
         return dbc.Row(
-            [dbc.Col(html.H3("Map: Neighbourhoods and Room types"), width='auto'),],
+            [dbc.Col(html.H3("Map: Neighbourhoods and Room Types"), width='auto'),],
              #dbc.Col(html.H4("And Room type"), width='auto')],
             justify='end',
             align='baseline'

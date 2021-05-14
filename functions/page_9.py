@@ -7,7 +7,7 @@ import pandas as pd
 
 def page_9_title():
         return dbc.Row(
-            [dbc.Col(html.H3("Prediction"), width='auto'),],
+            [dbc.Col(html.H3("Price Suggestion"), width='auto'),],
              #dbc.Col(html.H4("And Room type"), width='auto')],
             justify='end',
             align='baseline'
@@ -82,17 +82,25 @@ map_coord = html.Div([
                                                        dl.LayerGroup(id="layer")])
             ])
 
+text1 = """On this page you can find a suggested price for your own Airbnb listing by moving the sliders to match your condo and clicking on the map to indicate the location.
+
+We recommend choosing the position of your condo first, by navigating the map and zooming to its location and clicking. This way you can see the increase or decrease in price as you adjust how much of your condo you want to rent out, for how long, and if you need to buy a botnet to leave reviews on your listing to inflate the price.
+"""
+
+text2 ="""Behind the scenes our machine learning algorithms calculate how much the features you were introduced to on the previous pages increase or decrease the mean price of a condo in a given New York location. 
+When you click on the map and adjust the sliders the page gives you a suggested price, this will be an approximation of a likely price in that position with the given parameters."""
+
+
 def page_9(df):
     return html.Div([dbc.Row([
-                        dbc.Col(html.Div(Sampeltext), width=3),
-                        dbc.Col(form, ), #style={'background-color': '#eb4034'}),
-                        dbc.Col(map_coord,) #style={'background-color': '#3b968a'})
+                        dbc.Col(dcc.Markdown(text1), width=3),
+                        dbc.Col([
+                            dbc.Row([dbc.Col(form),dbc.Col(map_coord)]),
+                            dbc.Row(html.H4(id='prediction'), justify='center', style={'margin-top':'15px'})
+                        ])
                     ]),
-                    dbc.Row([
-                        dbc.Col(html.H4(id='prediction'), width='auto')
-                        #html.Div(id='slider-output-container'),
-                        #html.Div(id='coordinate-click-id') 
-                    ],
-                        justify='center',
-                        align='baseline',
-                        style={'margin-top':'15px'})])
+                    dbc.Row(dbc.Col(dcc.Markdown(text2)),
+                            style={'margin-top':'15px'}
+                           )], 
+                    style={'text-align': 'justify'})
+

@@ -35,11 +35,10 @@ def graph_price_avail(df):
 
 text1 = """On page 2 we learned how location and rental type changed the price of a condo. But these two things are hard to change when you already own an apartment. Here we look at the relation between the price on an Airbnb listing and the days per year it is available for renting, which is easier for a host to change. 
 
-On the graph we have two lines, the blue line *Data* displaying the mean price of actual Airbnb listings and a red line called *Spline*, showing a smoothed version of the *Data* line, helping us spot the trend in the data. a smoothed version of the *Data* line, helping us spot the trend in the data. Thus the figure shows a general trend of rents, being more expensive when available for more nights of the year, with a notable drop around 275 days per year. Why? Our hypothesis is that the price goes up with higher availability, as there is a higher chance to hit high season times, holidays etc. Why the dip then? Either it could be that private owners want the best days of the year for themselves and therefore only rent out at the less popular times. Or it could be that only commercial hosts are able to maintain such a high availability and they are able to maintain a cheaper price per night with a smaller operating cost.
-
+On the graph we have two lines, the blue line *Data* displaying the mean price of actual Airbnb listings and a red line called *Spline*, showing a smoothed version of the *Data* line, helping us spot the trend in the data.  
 """
 
-text2 =""""""
+text2 ="""Thus the figure shows a general trend of rents, being more expensive when available for more nights of the year, with a notable drop around 275 days per year. Why? Our hypothesis is that the price goes up with higher availability, as there is a higher chance to hit high season times, holidays etc. Why the dip then? Either it could be that private owners want the best days of the year for themselves and therefore only rent out at the less popular times. Or it could be that only commercial hosts are able to maintain such a high availability and they are able to maintain a cheaper price per night with a smaller operating cost."""
 
 def page_4(df):
         return html.Div([

@@ -7,7 +7,7 @@ import dash_leaflet as dl
 
 def page_5_title():
         return dbc.Row(
-            [dbc.Col(html.H3("Map: Price and new features"), width='auto'),],
+            [dbc.Col(html.H3("Map: Price and New Features"), width='auto'),],
              #dbc.Col(html.H4("And Room type"), width='auto')],
             justify='end',
             align='baseline'
@@ -25,10 +25,17 @@ def page_7(df):
         )
 
 
-text1 = """!!!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum euismod commodo. Phasellus metus lorem, tristique nec erat in, laoreet ultricies nunc. Maecenas efficitur placerat lobortis. Nullam lacus lectus, molestie ut semper vel, vestibulum sed ligula.!!
+text1 = """While the initial dataset from the Airbnb site is nice and extensive, we promised to take the analysis one step further. Here we do that by introducing the additional datasets.
+On the map we have enhanced the initial dataset with three additional datasets of New York. 
+The Tree Census in New York City 2015, mapping the more than 684,000 trees of New York.
+NYC Rat Sightings, a dataset describing the more than 100,000 rat sightings New York  had from 2010 to 2017. To keep the data relevant, we only select rat sightings from 2017.
+A dataset compromising 348 New York Tourist Locations. 
 """
 
-text2 =""""""
+text2 ="""
+Again, we have an interactive map: You can toggle the boxes to display the different features. This time, a bar at the top of the map shows the difference in price per night for staying at an Airbnb condo. The color scaling corresponds to the price of the individual listing. 
+
+Notice how Manhattan is a lot more blue and expensive, while Brooklyn is a lot more red, and therefore cheaper. This is despite the many trees in the area. Perhaps the number of trees nearby is not that influential after all? Or perhaps the number of rats which is also high has something to do with it?"""
 
 
 

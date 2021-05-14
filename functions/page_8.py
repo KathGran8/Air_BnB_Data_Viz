@@ -19,8 +19,6 @@ def page_8_title():
             align='baseline'
         )
 
-Sampeltext = "!!!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum euismod commodo. Phasellus metus lorem, tristique nec erat in, laoreet ultricies nunc. Maecenas efficitur placerat lobortis. Nullam lacus lectus, molestie ut semper vel, vestibulum sed ligula.!!"
-
 
 def ML_comparison_h():
     features_AB = ['Latitude', 'Longitude', 'Minimum Nights', 'Number of Reviews', 'Reviews per Month', 'Calculated Host Listings count', 'Availability 365', 
@@ -69,10 +67,29 @@ def ML_comparison_v():
     return go.Figure(data=data, layout=layout)
 
 
+text1 = """Here we get into the actual machine learning tool that we use for our price estimator. We use something called Random Forest to make a regression analysis on the data that is put into the machine.
+
+The figure illustrates the importance of the features discussed previously, in other words, how much of the price can be explained by a given feature. Hover over a feature to see exact values or inspect it visually to see how they compare.
+
+The blue bars show the features’ importance as assigned by a version of the estimator not using our custom features, and the red bars show how important the different features are according to a second version that were also given the extra features.   
+"""
+
+text2 =""""""
+
+
+
 def page_8(df):
-    return dbc.Row(
+        return html.Div([
+        dbc.Row(
             [
-                dbc.Col(html.Div(Sampeltext), width=3),
+                dbc.Col(dcc.Markdown(text1), width=3),
                 dbc.Col((dcc.Graph(id="graph8", figure=ML_comparison_h(), config={'displayModeBar': False})))
             ]
-        )
+        ),
+        dbc.Row(
+            [
+                dbc.Col(dcc.Markdown(text2),)
+            ]
+        ),
+    ],style={'text-align': 'justify',},)    
+    
