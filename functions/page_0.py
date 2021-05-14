@@ -34,7 +34,7 @@ In Page 5-6,  data exploration is done on three additional datasets, namely a re
 
 Finally, pages 8 and 9 belong to machine learning. The first page analyzes the relevance of the different features that the Airbnb dataset provides with and without the additional datasets information. The second and final page presents the price estimator built with the help of all the previous analysis of the data.
 
-Documentation of the analysis can be found in this [explainer notebook](https://github.com/KathGran8/Air_BnB_Data_Viz/tree/main/Explainer/How_to.ipynb).
+Documentation of the analysis can be found in this [explainer notebook](https://github.com/KathGran8/Air_BnB_Data_Viz/tree/main/Explainer/Explainer.ipynb).
 """
 
 
