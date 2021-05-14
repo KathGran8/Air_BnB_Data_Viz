@@ -21,6 +21,6 @@ def page_5(df, img_scr1):
     return dbc.Row(
             [
                 dbc.Col(html.Div(Sampeltext), width=3),
-                dbc.Col(html.Img(src=img_scr1, height = 700, width = 700))
+                dbc.Col(html.Img(src=img_scr1, width = '100%'))
             ]
         )
