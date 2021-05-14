@@ -27,7 +27,7 @@ def make_price_room_ng(df):
     data.append(go.Scatter(x = x, y = plot_data.loc['Staten Island'], name="Staten Island", line=dict(dash='dash')))
 
 
-    layout = {"title": {'text': "Mean Price per Room type and Neighbourhood Group", 'xanchor': 'center','yanchor': 'top', 'y':0.9, 'x':0.5},  
+    layout = {"title": {'text': "Mean Price per Room type and Borough", 'xanchor': 'center','yanchor': 'top', 'y':0.9, 'x':0.5},  
               "yaxis": {"title": "Price (dollars)"}} 
 
     return go.Figure(data=data, layout=layout)
