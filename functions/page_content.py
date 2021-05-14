@@ -42,13 +42,13 @@ def page_content(pathname, img_scr1, img_scr2):
         return page_4(df)
 
     elif pathname == "/page-5":
-        return page_5(df, img_scr1)
+        return page_5(df)
     
     elif pathname == "/page-6":
-        return page_6(df, img_scr2)
+        return page_6(df, img_scr1)
     
     elif pathname == "/page-7":
-        return page_7(df)
+        return page_7(df, img_scr2)
     
     elif pathname == "/page-8":
         return page_8(df)
