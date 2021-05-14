@@ -13,7 +13,31 @@ def page_intro_title():
             align='baseline'
         )
 
-Sampeltext = "!!!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum euismod commodo. Phasellus metus lorem, tristique nec erat in, laoreet ultricies nunc. Maecenas efficitur placerat lobortis. Nullam lacus lectus, molestie ut semper vel, vestibulum sed ligula.!! And here goes the link to the explainer notebook."
+text1 = """
+Welcome to the page. Here we explore what affects prices of Airbnb apartments in New York and on the last page we let you price your Airbnb apartment or room using our machine learning algorithm.
+
+To understand the analysis and visualisations on these pages, simply go through the pages in the listed fashion by clicking the numbers on the top of the screen. This also serves as a tutorial to equip you with the necessary knowledge to understand the price setting machine on the final tab.
+
+Our analysis of AirBnB pricing uses information from almost 50,000 documented listings in the New York area from 2019, which are available [here](https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data). 
+The dataset features information such as *location of apartments*, *minimum nights per stay*, *nights available per year* and *number of reviews* the listing already has.
+We take it one step further and include additional features from the cityscape. Do more trees create a prettier and more expensive neighborhood? Do listings right next door to tourist attractions cost more to rent? Or is an area plagued by rats less popular? Stick around to find out. 
+"""
+
+text2 = """A preview of the Airbnb dataset is shown to the right; use the slider in the bottom of the panel to see the features that are relevant for this work.  
+"""
+
+text3 = """Page 1 is a map of New York showing where the different neighborhoods are located and the borough they belong to. Additionally, it is possible to interact with it to show the locations of listings from the Airbnb dataset, grouped by their type of room. This will be our starting point.
+
+Pages 2-4 provide a visualization of how different aspects of a place influence the rental price of an Airbnb listing by using the data that was provided in the dataset already presented. 
+
+In pages 5 and 6, some data exploration is done on additional datasets, namely a record of location of the trees, rats sightings and touristic places in NYC. The final goal of this analysis is to see if there is any relation between this extra information and the price of an Airbnb listing. If there is, it could be used to improve our machine learning algorithms. Page 7 provides another interactive map with a sample of the location of the trees, rats and touristic places, together with a colour-dependent representation of the price of each listing.
+
+Finally, pages 8 and 9 belong to machine learning. The first page analyzes the relevance of the different features that the Airbnb dataset provides with and without the additional datasets information. The second and final page presents the price estimator built with the help of all the previous analysis of the data.
+
+Documentation of the analysis can be found in this [explainer notebook](https://github.com/KathGran8/Air_BnB_Data_Viz/tree/main/Explainer).
+"""
+
+
 
 def make_tabel(df_head):
     df = df_head.iloc[:8].copy(deep = True)
@@ -33,9 +57,27 @@ def make_tabel(df_head):
 
 
 def page_intro(df_head):
-    return dbc.Row(
+    return html.Div([
+        dbc.Row(
             [
-                dbc.Col(html.Div(Sampeltext), width=3),
-                dbc.Col(make_tabel(df_head), width=9)
+                dbc.Col(dcc.Markdown(text1),)
             ]
-    )
+        ),
+        dbc.Row(
+            [
+                dbc.Col(dcc.Markdown(text2), width=3),
+                dbc.Col(make_tabel(df_head), width=9, align = 'center')
+            ]
+        ),
+        dbc.Row(
+            [
+                dbc.Col(html.H4('Website Overveiw'))
+            ]
+        ),
+        dbc.Row(
+            [
+                dbc.Col(dcc.Markdown(text3),)
+            ]
+        ),
+    ],style={'text-align': 'justify',},)
+        
