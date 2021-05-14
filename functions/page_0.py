@@ -30,11 +30,11 @@ text3 = """Page 1 is a map of New York showing where the different neighborhoods
 
 Pages 2-4 provide a visualization of how different aspects of a place influence the rental price of an Airbnb listing by using the data that was provided in the dataset already presented. 
 
-In pages 5 and 6, some data exploration is done on additional datasets, namely a record of location of the trees, rats sightings and touristic places in NYC. The final goal of this analysis is to see if there is any relation between this extra information and the price of an Airbnb listing. If there is, it could be used to improve our machine learning algorithms. Page 7 provides another interactive map with a sample of the location of the trees, rats and touristic places, together with a colour-dependent representation of the price of each listing.
+In Page 5-6,  data exploration is done on three additional datasets, namely a record of location of the trees, rats sightings and touristic places in NYC. Page 5 provides another interactive map with a sample above mentioned data, together with a colour-dependent representation of the price of Airbnb listings. In page 7, it is explored if there is any relation between this extra information and the price of an Airbnb listing. 
 
 Finally, pages 8 and 9 belong to machine learning. The first page analyzes the relevance of the different features that the Airbnb dataset provides with and without the additional datasets information. The second and final page presents the price estimator built with the help of all the previous analysis of the data.
 
-Documentation of the analysis can be found in this [explainer notebook](https://github.com/KathGran8/Air_BnB_Data_Viz/tree/main/Explainer).
+Documentation of the analysis can be found in this [explainer notebook](https://github.com/KathGran8/Air_BnB_Data_Viz/tree/main/Explainer/How_to.ipynb).
 """
 
 
